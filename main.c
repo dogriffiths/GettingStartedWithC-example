@@ -29,7 +29,7 @@ int main() {
     do {
         fflush(stdin);
         fgets(guessText, 4, stdin);
-        short guess = (short) strtol(guessText, 0, 0);
+        guess = (short) strtol(guessText, 0, 0);
 
         printf("Your guess was %d\n", guess);
 
