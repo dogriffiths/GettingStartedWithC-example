@@ -12,15 +12,21 @@
 
 #define SCORE(x) (2.0f / (float)(x))
 
-float high_scores[3];
+typedef struct Ranking {
+    char name[100];
+    float score;
+} Ranking;
 
-void add_score(float score) {
+Ranking high_scores[3];
+
+void add_score(char name[], float score) {
     for (int i = 0; i < 3; i++) {
-        if(high_scores[i] < score) {
+        if(high_scores[i].score < score) {
             for(int j = 2; j > i; j--) {
                 high_scores[j] = high_scores[j - 1];
             }
-            high_scores[i] = score;
+            strcpy(high_scores[i].name, name);
+            high_scores[i].score = score;
             break;
         }
     }
@@ -30,7 +36,7 @@ void display_high_scores() {
     puts("High scores:\n");
 
     for(int i = 0; i < 3; i++) {
-        printf("%d: $%.2f\n", i + 1, high_scores[i]);
+        printf("%d: %s $%.2f\n", i + 1, high_scores[i].name, high_scores[i].score);
     }
 }
 
@@ -77,7 +83,7 @@ int main() {
 
         printf("You won $%.2f\n", score);
 
-        add_score(score);
+        add_score(name, score);
 
         display_high_scores();
     }
