@@ -15,36 +15,56 @@
 typedef struct Ranking {
     char name[100];
     float score;
+    struct Ranking *next;
 } Ranking;
 
 //Ranking high_scores[3];
 
-void add_score(Ranking *high_scores, char name[], float score) {
-    for (int i = 0; i < 3; i++) {
-        if(high_scores[i].score < score) {
-            for(int j = 2; j > i; j--) {
-                high_scores[j] = high_scores[j - 1];
+Ranking* add_score(Ranking *high_scores, char name[], float score) {
+    Ranking* newItem = malloc(sizeof(Ranking));
+    strcpy(newItem->name, name);
+    newItem->score = score;
+    newItem->next = NULL;
+
+    Ranking* result = high_scores;
+
+    if (high_scores == NULL)
+        result = newItem;
+    else if (high_scores->score < newItem->score) {
+        newItem->next = high_scores;
+        result = newItem;
+    } else {
+        Ranking *before = high_scores;
+        while(before->next != NULL) {
+            Ranking *after = before->next;
+            if (after->score < newItem->score) {
+                newItem->next = after;
+                break;
             }
-            strcpy(high_scores[i].name, name);
-            high_scores[i].score = score;
-            break;
+            before = before->next;
         }
+        before->next = newItem;
     }
+
+    return result;
 }
 
 void display_high_scores(Ranking* high_scores) {
     puts("High scores:\n");
 
-    for(int i = 0; i < 3; i++) {
-        printf("%d: %s $%.2f\n", i + 1, high_scores[i].name, high_scores[i].score);
+    Ranking* i = high_scores;
+    int count = 1;
+
+    while(i != NULL) {
+        printf("%d: %s $%.2f\n", count++, i->name, i->score);
+        i = i->next;
     }
 }
 
 int main() {
     srand(time(0));
 
-    Ranking* high_scores = malloc(sizeof(Ranking) * 3);
-    memset(high_scores, 0, sizeof(Ranking) * 3);
+    Ranking* high_scores = NULL;
 
     while(1) {
         puts(ASK_FOR_NAME);
@@ -86,12 +106,12 @@ int main() {
 
         printf("You won $%.2f\n", score);
 
-        add_score(high_scores, name, score);
+        high_scores = add_score(high_scores, name, score);
 
         display_high_scores(high_scores);
     }
 
-    free(high_scores);
+//    free(high_scores);
 
     return 0;
 }
