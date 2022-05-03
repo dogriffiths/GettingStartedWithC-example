@@ -33,6 +33,11 @@ int main() {
 
         printf("Your guess was %d\n", guess);
 
+        if (guess > secret)
+            puts("Too high!");
+        else if (guess < secret)
+            puts("Too low!");
+
     } while(guess != secret);
 
     puts("You win!");
