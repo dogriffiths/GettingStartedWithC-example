@@ -3,6 +3,14 @@
 #include <stdlib.h>
 #include <time.h>
 
+short get_shorty() {
+    char s[4];
+
+    fflush(stdin);
+    fgets(s, 4, stdin);
+    return (short) strtol(s, 0, 0);
+}
+
 int main() {
     srand(time(0));
 
@@ -23,14 +31,11 @@ int main() {
 
     puts("I am thinking of a number from 1 to 10. Can you guess what it is?");
 
-    char guessText[4];
     short guess;
     short attempts = 0;
 
     do {
-        fflush(stdin);
-        fgets(guessText, 4, stdin);
-        guess = (short) strtol(guessText, 0, 0);
+        guess = get_shorty();
 
         printf("Your guess was %d\n", guess);
 
