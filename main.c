@@ -3,21 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-short get_shorty() {
-    char s[4];
-
-    fflush(stdin);
-    fgets(s, 4, stdin);
-    return (short) strtol(s, 0, 0);
-}
-
-void get_string(char name[], int len) {
-    fgets(name, 100, stdin);
-
-    size_t pos = strcspn(name, "\n");
-
-    name[pos] = '\0';
-}
+short get_shorty();
+void get_string(char name[], int len);
 
 int main() {
     srand(time(0));
@@ -27,11 +14,6 @@ int main() {
     char name[100];
 
     get_string(name, 100);
-//    fgets(name, 100, stdin);
-//
-//    size_t pos = strcspn(name, "\n");
-//
-//    name[pos] = '\0';
 
     printf("Welcome, %s!\n", name);
 
@@ -64,4 +46,20 @@ int main() {
     printf("You won $%.2f\n", score);
 
     return 0;
+}
+
+short get_shorty() {
+    char s[4];
+
+    fflush(stdin);
+    fgets(s, 4, stdin);
+    return (short) strtol(s, 0, 0);
+}
+
+void get_string(char name[], int len) {
+    fgets(name, 100, stdin);
+
+    size_t pos = strcspn(name, "\n");
+
+    name[pos] = '\0';
 }
