@@ -24,15 +24,18 @@ int main() {
     puts("I am thinking of a number from 1 to 10. Can you guess what it is?");
 
     char guessText[4];
+    short guess;
 
-    fflush(stdin);
-    fgets(guessText, 4, stdin);
-    short guess = (short) strtol(guessText, 0, 0);
+    do {
+        fflush(stdin);
+        fgets(guessText, 4, stdin);
+        short guess = (short) strtol(guessText, 0, 0);
 
-    printf("Your guess was %d\n", guess);
+        printf("Your guess was %d\n", guess);
 
-    if (guess == secret)
-        puts("You win!");
+    } while(guess != secret);
+
+    puts("You win!");
 
     return 0;
 }
