@@ -3,4 +3,4 @@ project(game C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(game main.c)
+add_executable(game main.c io.c)
