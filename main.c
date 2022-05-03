@@ -31,7 +31,7 @@ int main() {
 
     printf("Your guess was %d\n", guess);
 
-    if (guess = secret)
+    if (guess == secret)
         puts("You win!");
 
     return 0;
