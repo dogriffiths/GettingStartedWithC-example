@@ -4,13 +4,13 @@
 #include <time.h>
 #include "io.h"
 
-#define FRENCH
-
 #ifdef FRENCH
 #define ASK_FOR_NAME "Veuillez me dire votre nom"
 #else
 #define ASK_FOR_NAME "Please tell me your name"
 #endif
+
+#define SCORE(x) (2.0f / (float)(x))
 
 int main() {
     srand(time(0));
@@ -18,6 +18,8 @@ int main() {
     puts(ASK_FOR_NAME);
 
     char name[100];
+    
+    printf("The name variable actually contains.... %d", name);
 
     get_string(name, 100);
 
@@ -47,7 +49,7 @@ int main() {
 
     puts("You win!");
 
-    float score = 2.0f / (float)attempts;
+    float score = SCORE(attempts);
 
     printf("You won $%.2f\n", score);
 
