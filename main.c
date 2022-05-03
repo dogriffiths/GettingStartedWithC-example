@@ -11,17 +11,27 @@ short get_shorty() {
     return (short) strtol(s, 0, 0);
 }
 
+void get_string(char name[], int len) {
+    fgets(name, 100, stdin);
+
+    size_t pos = strcspn(name, "\n");
+
+    name[pos] = '\0';
+}
+
 int main() {
     srand(time(0));
 
     puts("Please tell me your name");
 
     char name[100];
-    fgets(name, 100, stdin);
 
-    size_t pos = strcspn(name, "\n");
-
-    name[pos] = '\0';
+    get_string(name, 100);
+//    fgets(name, 100, stdin);
+//
+//    size_t pos = strcspn(name, "\n");
+//
+//    name[pos] = '\0';
 
     printf("Welcome, %s!\n", name);
 
