@@ -44,9 +44,9 @@ int main() {
 
     puts("You win!");
 
-    int score = 2 / attempts;
+    float score = 2.0f / (float)attempts;
 
-    printf("You won $%d\n", score);
+    printf("You won $%f\n", score);
 
     return 0;
 }
