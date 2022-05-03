@@ -12,14 +12,34 @@
 
 #define SCORE(x) (2.0f / (float)(x))
 
+float high_scores[3];
+
+void add_score(float score) {
+    for (int i = 0; i < 3; i++) {
+        if(high_scores[i] < score) {
+            for(int j = 2; j > i; j--) {
+                high_scores[j] = high_scores[j - 1];
+            }
+            high_scores[i] = score;
+            break;
+        }
+    }
+}
+
+void display_high_scores() {
+    puts("High scores:\n");
+
+    for(int i = 0; i < 3; i++) {
+        printf("%d: $%.2f\n", i + 1, high_scores[i]);
+    }
+}
+
 int main() {
     srand(time(0));
 
     puts(ASK_FOR_NAME);
 
     char name[100];
-
-    printf("The name variable actually contains.... %zu", name);
 
     get_string(name, 100);
 
@@ -52,6 +72,10 @@ int main() {
     float score = SCORE(attempts);
 
     printf("You won $%.2f\n", score);
+
+    add_score(score);
+
+    display_high_scores();
 
     return 0;
 }
