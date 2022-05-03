@@ -4,10 +4,18 @@
 #include <time.h>
 #include "io.h"
 
+#define FRENCH
+
+#ifdef FRENCH
+#define ASK_FOR_NAME "Veuillez me dire votre nom"
+#else
+#define ASK_FOR_NAME "Please tell me your name"
+#endif
+
 int main() {
     srand(time(0));
 
-    puts("Please tell me your name");
+    puts(ASK_FOR_NAME);
 
     char name[100];
 
