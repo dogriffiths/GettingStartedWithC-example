@@ -113,5 +113,12 @@ int main() {
 
 //    free(high_scores);
 
+    Ranking *r = high_scores;
+    while(r != NULL) {
+        Ranking* next = r->next;
+        free(r);
+        r = next;
+    }
+
     return 0;
 }
