@@ -11,15 +11,22 @@ int main() {
     char name[100];
     fgets(name, 100, stdin);
 
-    int pos = strcspn(name, "\n");
+    size_t pos = strcspn(name, "\n");
 
     name[pos] = '\0';
 
     printf("Welcome, %s!\n", name);
 
-    int secret = rand() % 10 + 1;
+    short secret = rand() % 10 + 1;
 
     printf("The secret is %d\n", secret);
+
+    char guessText[4];
+
+    fgets(guessText, 4, stdin);
+    short guess = (short)strtol(guessText, 0, 0);
+
+    printf("Your guess was %d\n", guess);
 
     return 0;
 }
