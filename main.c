@@ -23,16 +23,16 @@ int main() {
 
     puts("I am thinking of a number from 1 to 10. Can you guess what it is?");
 
-    while(1) {
-        char guessText[4];
+    char guessText[4];
 
-        fflush(stdin);
-        fgets(guessText, 4, stdin);
-        short guess = (short)strtol(guessText, 0, 0);
+    fflush(stdin);
+    fgets(guessText, 4, stdin);
+    short guess = (short) strtol(guessText, 0, 0);
 
-        printf("Your guess was %d\n", guess);
-    }
+    printf("Your guess was %d\n", guess);
 
+    if (guess = secret)
+        puts("You win!");
 
     return 0;
 }
