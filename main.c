@@ -46,7 +46,7 @@ int main() {
 
     float score = 2.0f / (float)attempts;
 
-    printf("You won $%f\n", score);
+    printf("You won $%.2f\n", score);
 
     return 0;
 }
