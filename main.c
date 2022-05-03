@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main() {
 
@@ -13,6 +14,10 @@ int main() {
     name[pos] = '\0';
 
     printf("Welcome, %s!\n", name);
+
+    int secret = rand();
+
+    printf("The secret is %d\n", secret);
 
     return 0;
 }
