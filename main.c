@@ -17,7 +17,7 @@ int main() {
 
     printf("Welcome, %s!\n", name);
 
-    int secret = rand();
+    int secret = rand() % 10 + 1;
 
     printf("The secret is %d\n", secret);
 
