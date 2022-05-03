@@ -91,6 +91,7 @@ int main() {
         display_high_scores(high_scores);
     }
 
+    free(high_scores);
 
     return 0;
 }
