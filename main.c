@@ -44,7 +44,9 @@ int main() {
 
     puts("You win!");
 
-    printf("You took %d attempts\n", attempts);
+    int score = 2 / attempts;
+
+    printf("You won $%d\n", score);
 
     return 0;
 }
