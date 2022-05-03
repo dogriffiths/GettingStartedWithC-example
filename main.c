@@ -17,9 +17,9 @@ typedef struct Ranking {
     float score;
 } Ranking;
 
-Ranking high_scores[3];
+//Ranking high_scores[3];
 
-void add_score(char name[], float score) {
+void add_score(Ranking *high_scores, char name[], float score) {
     for (int i = 0; i < 3; i++) {
         if(high_scores[i].score < score) {
             for(int j = 2; j > i; j--) {
@@ -32,7 +32,7 @@ void add_score(char name[], float score) {
     }
 }
 
-void display_high_scores() {
+void display_high_scores(Ranking* high_scores) {
     puts("High scores:\n");
 
     for(int i = 0; i < 3; i++) {
@@ -42,6 +42,9 @@ void display_high_scores() {
 
 int main() {
     srand(time(0));
+
+    Ranking* high_scores = malloc(sizeof(Ranking) * 3);
+    memset(high_scores, 0, sizeof(Ranking) * 3);
 
     while(1) {
         puts(ASK_FOR_NAME);
@@ -83,9 +86,9 @@ int main() {
 
         printf("You won $%.2f\n", score);
 
-        add_score(name, score);
+        add_score(high_scores, name, score);
 
-        display_high_scores();
+        display_high_scores(high_scores);
     }
 
 
