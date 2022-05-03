@@ -37,45 +37,51 @@ void display_high_scores() {
 int main() {
     srand(time(0));
 
-    puts(ASK_FOR_NAME);
+    while(1) {
+        puts(ASK_FOR_NAME);
 
-    char name[100];
+        char name[100];
 
-    get_string(name, 100);
+        get_string(name, 100);
 
-    printf("Welcome, %s!\n", name);
+        if (strlen(name) == 0)
+            break;
 
-    short secret = rand() % 10 + 1;
+        printf("Welcome, %s!\n", name);
 
-    printf("The secret is %d\n", secret);
+        short secret = rand() % 10 + 1;
 
-    puts("I am thinking of a number from 1 to 10. Can you guess what it is?");
+        printf("The secret is %d\n", secret);
 
-    short guess;
-    short attempts = 0;
+        puts("I am thinking of a number from 1 to 10. Can you guess what it is?");
 
-    do {
-        guess = get_shorty();
+        short guess;
+        short attempts = 0;
 
-        printf("Your guess was %d\n", guess);
+        do {
+            guess = get_shorty();
 
-        if (guess > secret)
-            puts("Too high!");
-        else if (guess < secret)
-            puts("Too low!");
+            printf("Your guess was %d\n", guess);
 
-        attempts++;
-    } while(guess != secret);
+            if (guess > secret)
+                puts("Too high!");
+            else if (guess < secret)
+                puts("Too low!");
 
-    puts("You win!");
+            attempts++;
+        } while(guess != secret);
 
-    float score = SCORE(attempts);
+        puts("You win!");
 
-    printf("You won $%.2f\n", score);
+        float score = SCORE(attempts);
 
-    add_score(score);
+        printf("You won $%.2f\n", score);
 
-    display_high_scores();
+        add_score(score);
+
+        display_high_scores();
+    }
+
 
     return 0;
 }
