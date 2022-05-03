@@ -25,6 +25,7 @@ int main() {
 
     char guessText[4];
     short guess;
+    short attempts = 0;
 
     do {
         fflush(stdin);
@@ -38,9 +39,12 @@ int main() {
         else if (guess < secret)
             puts("Too low!");
 
+        attempts++;
     } while(guess != secret);
 
     puts("You win!");
+
+    printf("You took %d attempts\n", attempts);
 
     return 0;
 }
