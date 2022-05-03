@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 int main() {
+    srand(time(0));
 
     puts("Please tell me your name");
 
