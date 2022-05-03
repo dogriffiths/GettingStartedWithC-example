@@ -26,6 +26,7 @@ int main() {
     while(1) {
         char guessText[4];
 
+        fflush(stdin);
         fgets(guessText, 4, stdin);
         short guess = (short)strtol(guessText, 0, 0);
 
