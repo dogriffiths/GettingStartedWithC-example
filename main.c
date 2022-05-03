@@ -18,8 +18,8 @@ int main() {
     puts(ASK_FOR_NAME);
 
     char name[100];
-    
-    printf("The name variable actually contains.... %d", name);
+
+    printf("The name variable actually contains.... %zu", name);
 
     get_string(name, 100);
 
